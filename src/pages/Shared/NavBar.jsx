@@ -1,9 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import Container from "../../components/Container";
-import { FaArrowRightToBracket } from "react-icons/fa6";
+import {
+  FaArrowRightFromBracket,
+  FaArrowRightToBracket,
+  FaCalendar,
+} from "react-icons/fa6";
+import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
+  const { user } = useAuth();
   const navItems = (
     <>
       <li>
@@ -13,14 +19,36 @@ const NavBar = () => {
           Home
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/login"
-          className="group hover:text-white hover:bg-blue-500 border border-blue-500">
-          Login
-          <FaArrowRightToBracket className="group-hover:rotate-[360deg] duration-300" />
-        </NavLink>
-      </li>
+      {user ? (
+        <>
+          <li>
+            <NavLink
+              to="/dashboard"
+              className="hover:text-white hover:bg-blue-500 border border-blue-500">
+              Dashboard <FaCalendar />
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/login"
+              className="group hover:text-white hover:bg-blue-500 border border-blue-500">
+              Logout
+              <FaArrowRightFromBracket className="group-hover:rotate-[360deg] duration-300" />
+            </NavLink>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <NavLink
+              to="/login"
+              className="group hover:text-white hover:bg-blue-500 border border-blue-500">
+              Login
+              <FaArrowRightToBracket className="group-hover:rotate-[360deg] duration-300" />
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
