@@ -19,22 +19,37 @@ const NavBar = () => {
           Home
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/dashboard"
+          className="hover:text-white hover:bg-blue-500 border border-blue-500">
+          Dashboard <FaCalendar />
+        </NavLink>
+      </li>
       {user ? (
         <>
-          <li>
-            <NavLink
-              to="/dashboard"
-              className="hover:text-white hover:bg-blue-500 border border-blue-500">
-              Dashboard <FaCalendar />
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/login"
-              className="group hover:text-white hover:bg-blue-500 border border-blue-500">
-              Logout
-              <FaArrowRightFromBracket className="group-hover:rotate-[360deg] duration-300" />
-            </NavLink>
+          <li className="dropdown dropdown-bottom dropdown-end">
+            <div tabIndex={0} role="button" className="hover:bg-blue-500">
+              <img
+                src={user?.photoURL || "https://i.ibb.co/yp2YxZf/Profile.png"}
+                className="w-5 aspect-square rounded-full scale-[140%]"
+              />
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li className="text-center py-2 text-black">
+                {user?.displayName}
+              </li>
+              <li>
+                <NavLink
+                  to="/login"
+                  className="group hover:text-white hover:bg-blue-500 border border-blue-500">
+                  Logout
+                  <FaArrowRightFromBracket className="group-hover:rotate-[360deg] duration-300" />
+                </NavLink>
+              </li>
+            </ul>
           </li>
         </>
       ) : (
@@ -63,7 +78,7 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="flex-none">
-          <ul className="menu menu-horizontal px-1 font-semibold gap-1 text-blue-500">
+          <ul className="menu menu-horizontal px-1 font-semibold gap-2 text-blue-500">
             {navItems}
           </ul>
         </div>

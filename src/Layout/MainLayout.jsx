@@ -11,7 +11,11 @@ const MainLayout = () => {
       <main className="min-h-[calc(100vh-208px)] pt-16">
         <Outlet />
       </main>
-      {pathname.includes("login") ? "" : <Footer />}
+      {pathname.includes("login") || pathname.includes("register") ? (
+        ""
+      ) : (
+        <Footer />
+      )}
     </>
   );
 };
