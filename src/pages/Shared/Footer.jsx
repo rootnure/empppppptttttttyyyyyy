@@ -11,7 +11,7 @@ import Container from "../../components/Container";
 
 const Footer = () => {
   return (
-    <footer className="bg-sky-100">
+    <footer className="">
       <Container className="footer p-10">
         <aside>
           <img src={logo} className="w-16 py-2" />
@@ -41,14 +41,14 @@ const Footer = () => {
         </nav>
         <nav>
           <header className="footer-title">Social</header>
-          <div className="grid grid-flow-col gap-4">
-            <a>
-              <FaFacebookF className="text-2xl" />
+          <div className="grid grid-flow-col gap-2">
+            <a href="#">
+              <FaFacebookF className="text-xl" />
             </a>
-            <a>
-              <FaLinkedin className="text-2xl" />
+            <a href="#">
+              <FaLinkedin className="text-2xl scale-90" />
             </a>
-            <a>
+            <a href="#">
               <FaYoutube className="text-2xl" />
             </a>
           </div>

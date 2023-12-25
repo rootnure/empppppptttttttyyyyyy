@@ -1,5 +1,6 @@
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import bannerImg from "../../../assets/images/cover.jpg";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -18,10 +19,12 @@ const Banner = () => {
             <p className="mb-5 font-semibold">
               Enhance and improve your task management with our platform.
             </p>
-            <button className="btn group font-bold bg-blue-500 border-none text-white hover:bg-blue-600">
+            <Link
+              to="/dashboard"
+              className="btn group font-bold bg-blue-500 border-none text-white hover:bg-blue-600">
               Let&apos;s Explore
               <FaArrowUpRightFromSquare className="rotate-45 group-hover:rotate-0 duration-150" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

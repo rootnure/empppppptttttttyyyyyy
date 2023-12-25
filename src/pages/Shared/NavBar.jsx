@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import Container from "../../components/Container";
 import {
@@ -7,9 +7,19 @@ import {
   FaCalendar,
 } from "react-icons/fa6";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout().then(() => {
+      navigate("/");
+      toast.success("Logout Successfully");
+    });
+  };
+
   const navItems = (
     <>
       <li>
@@ -37,17 +47,17 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li className="text-center py-2 text-black">
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-max">
+              <li className="text-center py-2 text-black px-4">
                 {user?.displayName}
               </li>
               <li>
-                <NavLink
-                  to="/login"
-                  className="group hover:text-white hover:bg-blue-500 border border-blue-500">
+                <button
+                  onClick={handleLogout}
+                  className="group hover:text-white hover:bg-blue-500">
                   Logout
                   <FaArrowRightFromBracket className="group-hover:rotate-[360deg] duration-300" />
-                </NavLink>
+                </button>
               </li>
             </ul>
           </li>
@@ -67,7 +77,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="bg-base-100 drop-shadow-md fixed inset-x-0">
+    <div className="bg-base-100 drop-shadow-md fixed inset-x-0 z-50">
       <Container className="navbar">
         <div className="flex-1">
           <Link
