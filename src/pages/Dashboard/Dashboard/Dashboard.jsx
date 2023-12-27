@@ -19,7 +19,7 @@ const Dashboard = () => {
   const handleAddNew = async (data) => {
     console.log(data);
     const dataToPost = {
-      email: "nur.mail@gmail.com",
+      email: user?.email,
       ...data,
     };
     reset();
@@ -57,13 +57,18 @@ const Dashboard = () => {
           </h2>
           <ul className="min-h-40 max-h-80 overflow-auto custom-scroll">
             {/* to do list */}
-            {todos.map((todo) => (
-              <li key={todo?._id}>
-                <h3 className="text-lg font-semibold">{todo?.title}</h3>
+            {todos.map((todo, idx) => (
+              <li
+                key={todo?._id}
+                className="border mt-2 border-gray-300 p-1.5 rounded-md">
+                <h3 className="text-lg font-semibold">{`${idx + 1}. ${
+                  todo?.title
+                }`}</h3>
                 <p>{todo?.description}</p>
                 <p>Due Date: {todo?.deadline}</p>
                 <p>
-                  Priority: <span className="font-bold">{todo?.priority}</span>
+                  Priority:{" "}
+                  <span className="font-bold uppercase">{todo?.priority}</span>
                 </p>
               </li>
             ))}
