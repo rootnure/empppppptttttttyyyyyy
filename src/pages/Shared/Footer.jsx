@@ -11,7 +11,7 @@ import Container from "../../components/Container";
 
 const Footer = () => {
   return (
-    <footer className="">
+    <footer className="border-t">
       <Container className="footer p-10">
         <aside>
           <img src={logo} className="w-16 py-2" />

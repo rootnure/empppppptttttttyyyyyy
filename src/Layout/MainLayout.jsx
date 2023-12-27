@@ -8,7 +8,7 @@ const MainLayout = () => {
   return (
     <>
       <NavBar />
-      <main className="min-h-[calc(100vh-208px)] pt-16">
+      <main className="min-h-[calc(100vh-210px)] pt-16">
         <Outlet />
       </main>
       {pathname.includes("login") || pathname.includes("register") ? (

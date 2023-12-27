@@ -1,0 +1,25 @@
+.custom-scroll::-webkit-scrollbar {
+  @apply w-1.5;
+}
+
+/* Track */
+.custom-scroll::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-xl;
+}
+
+/* Handle */
+.custom-scroll::-webkit-scrollbar-thumb {
+  @apply rounded-xl;
+}
+
+.bg-red-50 .custom-scroll::-webkit-scrollbar-thumb {
+  @apply bg-red-500;
+}
+
+.bg-blue-50 .custom-scroll::-webkit-scrollbar-thumb {
+  @apply bg-blue-500;
+}
+
+.bg-green-50 .custom-scroll::-webkit-scrollbar-thumb {
+  @apply bg-green-500;
+}
